@@ -43,7 +43,7 @@ async function deleteTodo() {
 
 async function updatePriorityUp() {
     const id = this.parentNode.childNodes[1].innerText.trim()
-    const priority = parseInt(this.parentNode.childNodes[7].innerText.trim())
+    const priority = parseInt(this.parentNode.childNodes[3].innerText.trim())
     try {
         const response = await fetch('updatePriorityUp', {
             method: 'put',
@@ -63,7 +63,7 @@ async function updatePriorityUp() {
 
 async function updatePriorityDown() {
     const id = this.parentNode.childNodes[1].innerText.trim()
-    const priority = parseInt(this.parentNode.childNodes[7].innerText.trim())
+    const priority = parseInt(this.parentNode.childNodes[3].innerText.trim())
     try {
         const response = await fetch('updatePriorityDown', {
             method: 'put',
