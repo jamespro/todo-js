@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/addTodo', (req, res) => {
-    db.collection('todojs').insertOne({ description: req.body.description, priority: req.body.priority, done: false })
+    db.collection('todojs').insertOne({ description: req.body.description, priority: parseInt(req.body.priority), done: false })
         .then(result => {
             console.log('Todo Added!')
             res.redirect('/')
@@ -47,9 +47,50 @@ app.delete('/deleteTodo', (req, res) => {
     .catch(error => console.error(error))
 })
 
-app.put('/updatePriority', (req, res) => {
-    
+app.put('/updatePriorityUp', (req, res) => {
+    db.collection('todojs').updateOne({ _id: new mongo.ObjectID(req.body.id)},
+        {
+            $set: {
+                priority:req.body.priority + 1
+            }
+        }
+    )
+        .then(result => {
+        console.log('Todo Priority Increased!')
+        res.json('Todo priority increased')
+        })
+        .catch(error => console.log(error))
 })
+
+app.put('/updatePriorityDown', (req, res) => {
+    db.collection('todojs').updateOne({ _id: new mongo.ObjectID(req.body.id)},
+        {
+            $set: {
+                priority:req.body.priority - 1
+            }
+        }
+    )
+        .then(result => {
+        console.log('Todo Priority Lowered!')
+        res.json('Todo priority lowered')
+        })
+        .catch(error => console.log(error))
+})
+
+// app.put('/updatePriority', (req, res) => {
+//     db.collection('todojs').updateOne({ id: new mongo.ObjectID(req.body.id)},
+//         {
+//             $set: {
+//                 priority:req.body.currentpriority + req.body.prioritychange
+//             }
+//         }
+//     )
+//         .then(result => {
+//         console.log('Todo Priority Updated!')
+//         res.json('Todo priority updated')
+//         })
+//         .catch(error => console.log(error))
+// })
 
 app.listen(process.env.PORT || PORT, () => {
     console.log(`Server running on port ${PORT}`)

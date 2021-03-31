@@ -22,18 +22,10 @@
     <ul class="todos">
         <% for(let i=0; i < info.length; i++) {%>
             <li class="todo">
-                <span class='id'>
-                    <%= info[i]._id %>
-                </span>
-                <span class='description'>
-                    <%= info[i].description %>
-                </span>
-                <span class='done'>
-                    <%= info[i].done %>
-                </span>
-                <span class='priority'>
-                    <%= info[i].priority %>
-                </span>
+                <span class='id'><%= info[i]._id %></span>
+                <span class='description'><%= info[i].description %></span>
+                <span class='done'><%= info[i].done %></span>
+                <span class='priority'><%= info[i].priority %></span>
                 <span class='priorityup fa fa-thumbs-up'></span>
                 <span class='prioritydown fa fa-thumbs-down'></span>
                 <span class='delete fa fa-trash'></span>
@@ -44,7 +36,7 @@
     <h2>Add A TODO:</h2>
     
     <form action="/addTodo" method="POST">
-        <input type="text" placeholder="Description" name="description">
+        <input type="text" placeholder="Description" name="description" autofocus="autofocus">
         <input type="number" placeholder="Priority" name="priority" value="3">
         <input type="submit">
     </form>
