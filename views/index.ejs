@@ -31,13 +31,13 @@
                 <span>
                     <%= info[i].priority %>
                 </span>
-                <span class='fa fa-thumbs-up' id="priority"></span>
-                <span class='fa fa-trash' id="delete"></span>
+                <span class='priority fa fa-thumbs-up'></span>
+                <span class='delete fa fa-trash'></span>
             </li>
             <% } %>
     </ul>
     
-    <h2>Add A Rapper:</h2>
+    <h2>Add A TODO:</h2>
     
     <form action="/addTodo" method="POST">
         <input type="text" placeholder="Description" name="description">
