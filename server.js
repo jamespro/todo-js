@@ -77,6 +77,21 @@ app.put('/updatePriorityDown', (req, res) => {
         .catch(error => console.log(error))
 })
 
+app.put('/updateDone', (req, res) => {
+    db.collection('todojs').updateOne({ _id: new mongo.ObjectID(req.body.id)},
+        {
+            $set: {
+                done:req.body.done
+            }
+        }
+    )
+        .then(result => {
+        console.log('Todo Complete!')
+        res.json('Todo complete')
+        })
+        .catch(error => console.log(error))
+})
+
 // app.put('/updatePriority', (req, res) => {
 //     db.collection('todojs').updateOne({ id: new mongo.ObjectID(req.body.id)},
 //         {

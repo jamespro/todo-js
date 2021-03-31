@@ -23,12 +23,16 @@
         <% for(let i=0; i < info.length; i++) {%>
             <li class="todo">
                 <span class='id'><%= info[i]._id %></span>
+                <% if (info[i].done) { %>
+                <span class='done done-<%=info[i].done%> fas fa-check-square'></span>
+                <% } else { %>
+                <span class='done done-<%=info[i].done%> fas fa-square'></span>
+                <% } %>
                 <span class='description'><%= info[i].description %></span>
-                <span class='done'><%= info[i].done %></span>
                 <span class='priority'><%= info[i].priority %></span>
-                <span class='priorityup fa fa-thumbs-up'></span>
-                <span class='prioritydown fa fa-thumbs-down'></span>
-                <span class='delete fa fa-trash'></span>
+                <span class='priorityup fas fa-thumbs-up'></span>
+                <span class='prioritydown fas fa-thumbs-down'></span>
+                <span class='delete fas fa-trash'></span>
             </li>
             <% } %>
     </ul>

@@ -2,6 +2,8 @@
 const deleteIcon = document.querySelectorAll('.delete')
 const priorityIconUp = document.querySelectorAll('.priorityup')
 const priorityIconDown = document.querySelectorAll('.prioritydown')
+const doneIconTrue = document.querySelectorAll('.done-true')
+const doneIconFalse = document.querySelectorAll('.done-false')
 
 //add eventlisteners
 Array.from(deleteIcon).forEach((element)=>{
@@ -12,6 +14,12 @@ Array.from(priorityIconUp).forEach((element)=>{
 })
 Array.from(priorityIconDown).forEach((element)=>{
     element.addEventListener('click', updatePriorityDown)
+})
+Array.from(doneIconFalse).forEach((element)=>{
+    element.addEventListener('click', updateDone)
+})
+Array.from(doneIconTrue).forEach((element)=>{
+    element.addEventListener('click', updateNotdone)
 })
 
 async function deleteTodo() {
@@ -63,6 +71,44 @@ async function updatePriorityDown() {
             body: JSON.stringify({
                 id: id,
                 priority: priority
+            })
+        })
+    const data = await response.json()
+    console.log(data)
+    location.reload()
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+async function updateDone() {
+    const id = this.parentNode.childNodes[1].innerText.trim()
+    try {
+        const response = await fetch('updateDone', {
+            method: 'put',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify({
+                id: id,
+                done: true
+            })
+        })
+    const data = await response.json()
+    console.log(data)
+    location.reload()
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+async function updateNotdone() {
+    const id = this.parentNode.childNodes[1].innerText.trim()
+    try {
+        const response = await fetch('updateDone', {
+            method: 'put',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify({
+                id: id,
+                done: false
             })
         })
     const data = await response.json()
