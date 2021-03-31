@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const mongo = require('mongodb')
 const MongoClient = require('mongodb').MongoClient
 const PORT = 2121
 require('dotenv').config()
@@ -31,14 +32,24 @@ app.get('/', (req, res) => {
 app.post('/addTodo', (req, res) => {
     db.collection('todojs').insertOne({ description: req.body.description, priority: req.body.priority, done: false })
         .then(result => {
-            console.log('Todo Added')
+            console.log('Todo Added!')
             res.redirect('/')
         })
         .catch(error => console.error(error))
 })
     
+app.delete('/deleteTodo', (req, res) => {
+    db.collection('todojs').deleteOne({ _id: new mongo.ObjectId(req.body.id) })
+        .then(result => {
+            console.log('Todo Deleted')
+            res.json('Todo Deleted')
+        })
+    .catch(error => console.error(error))
+})
 
-
+app.put('/updatePriority', (req, res) => {
+    
+})
 
 app.listen(process.env.PORT || PORT, () => {
     console.log(`Server running on port ${PORT}`)

@@ -22,16 +22,20 @@
     <ul class="todos">
         <% for(let i=0; i < info.length; i++) {%>
             <li class="todo">
-                <span>
+                <span class='id'>
+                    <%= info[i]._id %>
+                </span>
+                <span class='description'>
                     <%= info[i].description %>
                 </span>
-                <span>
+                <span class='done'>
                     <%= info[i].done %>
                 </span>
-                <span>
+                <span class='priority'>
                     <%= info[i].priority %>
                 </span>
-                <span class='priority fa fa-thumbs-up'></span>
+                <span class='priorityup fa fa-thumbs-up'></span>
+                <span class='prioritydown fa fa-thumbs-down'></span>
                 <span class='delete fa fa-trash'></span>
             </li>
             <% } %>
