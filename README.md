@@ -10,6 +10,8 @@ https://todojs-jamespro.herokuapp.com/
 * Done: true/false, faux checkboxes, and can update
 * Priority: number, with icons to increase or decrease the priority
 
+### Tech
+
 * vanilla JS, EJS
 * Node.js
 * MongoDB for data storage
