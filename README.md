@@ -15,7 +15,9 @@ Also needed to make it a mongo "ObjectId":
 
 `db.collection('todojs').deleteOne({ _id: new mongo.ObjectId(req.body.id) })`
 
-## index.ejs: I put the _id from mongo into the HTML. I also used CSS to hide it, using display:none
+## index.ejs:
+
+I put the _id from mongo into the HTML. I also used CSS to hide it, using display:none
 
 `< span class='id' ><%= info[i]._id %></span >`
 
