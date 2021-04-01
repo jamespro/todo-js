@@ -10,6 +10,11 @@ https://todojs-jamespro.herokuapp.com/
 * Done: true/false, faux checkboxes, and can update
 * Priority: number, with icons to increase or decrease the priority
 
+* vanilla JS, EJS
+* Node.js
+* MongoDB for data storage
+* Heroku hosting
+
 ## Using the MongoDB _id
 
 I was able to use the MongoDB "_id" instead of relying on finding documents by some combo of the fields. I had to do a couple special things:
